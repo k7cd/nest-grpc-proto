@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package collection;
+
+service CollectionSerivce{
+    rpc ToggleCollection(ToggleCollectionRequest) returns (ToggleCollectionResponse);
+    rpc QueryCollectionList(QueryCollectionListRequest) returns (QueryCollectionListResponse);
+}
+
+message CollectionData{
+  int32 blogId = 1;
+  int32 userId = 2;
+  int32 status = 3;
+  int32 createTime = 4;
+  int32 updateTime = 5;
+}
+
+
+// 收藏/取消收藏
+
+message ToggleCollectionRequest{
+    int32 blogId = 1;
+    int32 userId = 2;
+} 
+
+message ToggleCollectionResponse{
+    int32 code = 1;
+    repeated string error = 2;
+}
+
+// 查询我的收藏列表
+
+message QueryCollectionListRequest{
+    int32 userId = 1;
+}
+
+message QueryCollectionListResponse{
+    int32 code = 1;
+    repeated string error = 2;
+    repeated CollectionData data = 3;
+}

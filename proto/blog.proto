@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package blog;
+
+
+service BlogService {
+  rpc CreateBlog (CreateBlogRequest) returns (CreateBlogesponse) {}
+  rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
+  rpc QueryList (QueryListRequest) returns (QueryListResponse) {}
+}
+
+// CreateBlog
+
+message CreateBlogRequest {
+  string title = 1;
+  string summary = 2;
+  string content = 3;
+}
+
+message CreateBlogesponse {
+  int32 code = 1;
+  repeated string error = 2;
+  int32 id = 3;
+}
+
+// FindByIdData
+message FindByIdData {
+  int32 id = 1;
+  string title = 2;
+  string summary = 3;
+  int32 content = 4;
+}
+
+// FindByIdRequest
+
+message FindByIdRequest {
+  int32 id = 1;
+}
+
+message FindByIdResponse {
+  int32 code = 1;
+  repeated string error = 2;
+  FindByIdData data = 3;
+}
+
+
+// QueryListRequest
+
+message QueryListRequest {
+  int32 page = 1;
+  int32 pageSize = 2;
+}
+
+
+message QueryListResponse{
+  int32 code = 1;
+  repeated string error = 2;
+  repeated FindByIdData data = 3;
+}
