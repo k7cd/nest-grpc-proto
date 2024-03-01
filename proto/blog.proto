@@ -4,7 +4,7 @@ package blog;
 
 
 service BlogService {
-  rpc CreateBlog (CreateBlogRequest) returns (CreateBlogesponse) {}
+  rpc CreateBlog (CreateBlogRequest) returns (CreateBlogResponse) {}
   rpc FindById (FindByIdRequest) returns (FindByIdResponse) {}
   rpc QueryList (QueryListRequest) returns (QueryListResponse) {}
 }
@@ -15,9 +15,10 @@ message CreateBlogRequest {
   string title = 1;
   string summary = 2;
   string content = 3;
+  int32 userId = 4;
 }
 
-message CreateBlogesponse {
+message CreateBlogResponse {
   int32 code = 1;
   repeated string error = 2;
   int32 id = 3;
