@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package collection;
 
-service CollectionSerivce{
+service CollectionService{
     rpc ToggleCollection(ToggleCollectionRequest) returns (ToggleCollectionResponse);
     rpc QueryCollectionList(QueryCollectionListRequest) returns (QueryCollectionListResponse);
 }
